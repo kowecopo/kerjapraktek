@@ -21,7 +21,7 @@ public class Barcode extends AppCompatActivity {
     Spinner sp;
     TextView display_data;
  //   TextView display_data2;
-    String names[] = {" ", "Toilet 1", "Toilet 2", "Toilet 3"};
+    String names[] = {" ", "Toilet 1", "Toilet 2", "Toilet 3", "Toilet 4"};
     ArrayAdapter<String> adapter;
     String record = "";
  //   Connectionclass connectionclass;
@@ -71,6 +71,9 @@ public class Barcode extends AppCompatActivity {
                     case 3:
                         record = "Toilet 3";
                         break;
+                    case 4:
+                        record = "Toilet 4";
+                        break;
                 }
             }
 
@@ -95,7 +98,7 @@ public class Barcode extends AppCompatActivity {
                         Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Barcode.this, MenuToilet.class);
+                        Intent intent = new Intent(Barcode.this, Login.class);
                         startActivity(intent);
              //       } else {
                 //        super.onActivityResult(requestCode, resultCode, data);
