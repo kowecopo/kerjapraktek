@@ -22,6 +22,7 @@ import java.net.URLEncoder;
 public class LoginBackground extends AsyncTask<String, Void, String> {
     Context context;
     AlertDialog dialog;
+    String username;
     public LoginBackground(Context ctx){
         context = ctx;
     }
@@ -33,28 +34,13 @@ public class LoginBackground extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected void onPostExecute(String result) {
-//        dialog.setMessage(result);
-//        dialog.show();
-        if(result.equals("login failed")){
-            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
-        } else {
-            Intent i = new Intent(context, MenuToilet.class);
-            context.startActivity(i);
-            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
-//            alertDialog.setMessage(result);
-//            alertDialog.show();
-        }
-    }
-
-    @Override
     protected String doInBackground(String... params) {
         String type = params[0];
         String result="";
         String login_url = "http://192.168.56.1/kp/login.php";
         if(type.equals("login")){
             try {
-                String username = params[1];
+                username = params[1];
                 String password = params[2];
                 URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -90,6 +76,24 @@ public class LoginBackground extends AsyncTask<String, Void, String> {
             return result;
         }
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+//        dialog.setMessage(result);
+//        dialog.show();
+        if(result.equals("login failed")){
+            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+            User user = new User(this.context);
+            user.setName(username);
+            Intent i = new Intent(context, MenuToilet.class);
+            context.startActivity(i);
+
+//            alertDialog.setMessage(result);
+//            alertDialog.show();
+        }
     }
 
     @Override

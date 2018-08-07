@@ -13,6 +13,7 @@ Button log;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_toilet);
+
         s = (Button) findViewById(R.id.button);
         s.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -22,4 +23,15 @@ Button log;
         }
 
         );
-    }}
+    }
+
+    @Override
+    public void onBackPressed() { }
+
+    public void LogOut(View view){
+        new User(MenuToilet.this).removeUser();
+        Intent i = new Intent(MenuToilet.this, Barcode.class);
+        startActivity(i);
+        finish();
+    }
+}

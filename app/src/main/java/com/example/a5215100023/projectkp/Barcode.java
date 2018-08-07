@@ -98,7 +98,7 @@ public class Barcode extends AppCompatActivity {
                         Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Barcode.this, Login.class);
+                        Intent intent = new Intent(Barcode.this, Splash.class);
                         startActivity(intent);
              //       } else {
                 //        super.onActivityResult(requestCode, resultCode, data);

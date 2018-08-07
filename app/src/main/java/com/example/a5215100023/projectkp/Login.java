@@ -9,7 +9,7 @@ import android.widget.EditText;
 public class Login extends AppCompatActivity {
     Button login;
     EditText UsernameEt, PasswordEt;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
