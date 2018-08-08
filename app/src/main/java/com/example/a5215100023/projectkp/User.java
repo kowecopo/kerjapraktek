@@ -20,7 +20,27 @@ public class User {
         sharedPreferences.edit().putString("userdata",name).commit();
     }
 
-    private String name;
+    public String getToilet() {
+        toilet = sharedPreferences.getString("toilet","");
+        return toilet;
+    }
+
+    public void setToilet(String toilet) {
+        this.toilet = toilet;
+        sharedPreferences.edit().putString("toilet",toilet).commit();
+    }
+
+    public String getId_absensi() {
+        id_absensi = sharedPreferences.getString("id_absensi","");
+        return id_absensi;
+    }
+
+    public void setId_absensi(String id_absensi) {
+        this.id_absensi = id_absensi;
+        sharedPreferences.edit().putString("id_absensi",id_absensi).commit();
+    }
+
+    private String name, toilet, id_absensi;
     SharedPreferences sharedPreferences;
 
     public User(Context context){

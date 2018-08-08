@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">projectkp</string>
     <string name="title_activity_splash">Splash</string>
+    <string name="pilih_foto">Pilih FOTO</string>
+    <string name="pilih_foto1">Pilih Foto</string>
+    <string name="sebelum">Sebelum</string>
+    <string name="sesudah">Sesudah</string>
+    <string name="upload_foto">UPload foto</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
 </resources>
 

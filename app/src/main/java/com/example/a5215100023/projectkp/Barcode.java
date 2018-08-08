@@ -1,6 +1,8 @@
 package com.example.a5215100023.projectkp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +28,11 @@ public class Barcode extends AppCompatActivity {
     String record = "";
  //   Connectionclass connectionclass;
 
+//    Context context;
+//    public Barcode(Context ctx){
+//        context = ctx;
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,67 +55,57 @@ public class Barcode extends AppCompatActivity {
         });
 
 //spinner
-        sp = (Spinner) findViewById(R.id.spinner);
+//        sp = (Spinner) findViewById(R.id.spinner);
       //  String text = sp.getSelectedItem().toString();
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
-        display_data = (TextView) findViewById(R.id.display_result);
-        sp.setAdapter(adapter);
-        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        record = " ";
-                        break;
-                    case 1:
-                        record = "Toilet 1";
-                        break;
-                    case 2:
-                        record = "Toilet 2";
-                        break;
-                    case 3:
-                        record = "Toilet 3";
-                        break;
-                    case 4:
-                        record = "Toilet 4";
-                        break;
-                }
-            }
-
-
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
+//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+//        display_data = (TextView) findViewById(R.id.display_result);
+//        sp.setAdapter(adapter);
+//        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                switch (position) {
+//                    case 0:
+//                        record = " ";
+//                        break;
+//                    case 1:
+//                        record = "Toilet 1";
+//                        break;
+//                    case 2:
+//                        record = "Toilet 2";
+//                        break;
+//                    case 3:
+//                        record = "Toilet 3";
+//                        break;
+//                    case 4:
+//                        record = "Toilet 4";
+//                        break;
+//                }
+//            }
+//
+//
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
     }
 
-    public void diplsyResult (View view) {
-        display_data.setTextSize(18);
-        display_data.setText(record);
+//    public void diplsyResult (View view) {
+//        display_data.setTextSize(18);
+//        display_data.setText(record);
+//    }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result.getContents() != null) {
+//            display_data.setTextSize(25);
+//            display_data.setText(result.getContents());
+            User user = new User(Barcode.this);
+            user.setToilet(result.getContents());
+//            Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Barcode.this, Splash.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
+        }
     }
-
-            protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-                IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-     //         String display = display_data.getText().toString();
-      //          String resultt = result.getContents().toString();
-                if (result != null) {
-                    if (result == null) {
-                        Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Barcode.this, Splash.class);
-                        startActivity(intent);
-             //       } else {
-                //        super.onActivityResult(requestCode, resultCode, data);
-                  //      Toast.makeText(this, "Barcode salah", Toast.LENGTH_LONG).show();
-
-                    }
-                }
-            }
-
-
-
-    }
+}
 

@@ -22,20 +22,30 @@ public class Splash extends AppCompatActivity {
         final User user = new User(Splash.this);
         Timer timer = new Timer();
 
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (user.getName()!=""){
-                    Intent i = new Intent(Splash.this, MenuToilet.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Intent i = new Intent(Splash.this, Login.class);
-                    startActivity(i);
-                    finish();
-                }
-            }
-        },2000);
+        if (user.getName()!=""){
+            Intent i = new Intent(Splash.this, MenuToilet.class);
+            startActivity(i);
+            finish();
+        } else {
+            Intent i = new Intent(Splash.this, Login.class);
+            startActivity(i);
+            finish();
+        }
+
+//        timer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                if (user.getName()!=""){
+//                    Intent i = new Intent(Splash.this, MenuToilet.class);
+//                    startActivity(i);
+//                    finish();
+//                } else {
+//                    Intent i = new Intent(Splash.this, Login.class);
+//                    startActivity(i);
+//                    finish();
+//                }
+//            }
+//        },1000);
     }
 
 }
