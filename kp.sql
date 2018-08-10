@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2018 at 10:55 PM
+-- Generation Time: Aug 10, 2018 at 09:15 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -36,13 +36,18 @@ CREATE TABLE `absensi` (
   `toilet` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `absensi`
+-- Table structure for table `data`
 --
 
-INSERT INTO `absensi` (`id_absensi`, `id_user`, `waktu_login`, `waktu_logout`, `toilet`) VALUES
-(31, 1, '2018-08-08 15:06:55', '2018-08-08 15:06:58', 'Toilet 2'),
-(32, 1, '2018-08-08 17:32:25', '', 'Toilet 1');
+CREATE TABLE `data` (
+  `id_absensi` int(11) NOT NULL,
+  `nama_alat` varchar(30) NOT NULL,
+  `gambar_sebelum` varchar(30) NOT NULL,
+  `gambar_sesudah` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -87,7 +92,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `user`

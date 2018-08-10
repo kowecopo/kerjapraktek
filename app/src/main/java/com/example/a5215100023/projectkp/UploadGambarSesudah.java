@@ -38,7 +38,7 @@ public class UploadGambarSesudah extends AppCompatActivity {
     ImageView iv1;
     final int CODE_GALLERY_REQUEST = 999;
     Bitmap bitmap;
-    String urlUpload = "http://192.168.56.1/kp/upload.php";
+    String urlUpload = "http://192.168.56.1/kp/uploadSesudah.php";
     ProgressDialog progressDialog;
 
 
@@ -76,6 +76,7 @@ public class UploadGambarSesudah extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "File has been uploaded", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), MenuToilet.class));
                     }
                 }, new Response.ErrorListener() {
                     @Override
