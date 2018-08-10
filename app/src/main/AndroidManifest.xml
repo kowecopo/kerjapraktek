@@ -26,6 +26,7 @@
         <activity android:name=".MenuToilet" />
         <activity android:name=".UploadGambar" />
         <activity android:name=".Splash" />
+        <activity android:name=".UploadGambarSesudah"></activity>
     </application>
 
 </manifest>

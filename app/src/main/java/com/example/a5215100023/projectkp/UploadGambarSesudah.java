@@ -2,7 +2,6 @@ package com.example.a5215100023.projectkp;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -15,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
-import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -34,7 +32,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UploadGambar extends AppCompatActivity {
+public class UploadGambarSesudah extends AppCompatActivity {
 
     Button btnPilih1, btnUpload;
     ImageView iv1;
@@ -47,7 +45,7 @@ public class UploadGambar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_gambar);
+        setContentView(R.layout.activity_upload_gambar_sesudah);
 
         btnPilih1 = (Button) findViewById(R.id.button3);
         iv1 = (ImageView) findViewById(R.id.imageView);
@@ -58,7 +56,7 @@ public class UploadGambar extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 ActivityCompat.requestPermissions(
-                        UploadGambar.this,
+                        UploadGambarSesudah.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         CODE_GALLERY_REQUEST
                 );
@@ -66,20 +64,18 @@ public class UploadGambar extends AppCompatActivity {
         });
 
         btnUpload.setOnClickListener(new View.OnClickListener(){
-            final User user = new User(UploadGambar.this);
+            final User user = new User(UploadGambarSesudah.this);
             @Override
             public void onClick(View v) {
-                progressDialog = new ProgressDialog(UploadGambar.this);
+                progressDialog = new ProgressDialog(UploadGambarSesudah.this);
                 progressDialog.setTitle("Uploading");
                 progressDialog.setMessage("Please wait...");
                 progressDialog.show();
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, urlUpload, new Response.Listener<String>() {
-
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "File has been uploaded", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), UploadGambarSesudah.class));
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -99,7 +95,7 @@ public class UploadGambar extends AppCompatActivity {
                         return params;
                     }
                 };
-                RequestQueue requestQueue = Volley.newRequestQueue(UploadGambar.this);
+                RequestQueue requestQueue = Volley.newRequestQueue(UploadGambarSesudah.this);
                 requestQueue.add(stringRequest);
             }
         });

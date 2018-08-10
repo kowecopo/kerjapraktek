@@ -40,7 +40,17 @@ public class User {
         sharedPreferences.edit().putString("id_absensi",id_absensi).commit();
     }
 
-    private String name, toilet, id_absensi;
+    public String getNama_alat() {
+        nama_alat = sharedPreferences.getString("nama_alat","");
+        return nama_alat;
+    }
+
+    public void setNama_alat(String nama_alat) {
+        this.nama_alat = nama_alat;
+        sharedPreferences.edit().putString("nama_alat",nama_alat).commit();
+    }
+
+    private String name, toilet, id_absensi, nama_alat;
     SharedPreferences sharedPreferences;
 
     public User(Context context){

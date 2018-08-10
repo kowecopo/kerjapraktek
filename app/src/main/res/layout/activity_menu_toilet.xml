@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.034" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/buttonUrinoir"
         android:layout_width="283dp"
         android:layout_height="wrap_content"
         android:text="Urinoir"
@@ -31,7 +31,7 @@
         app:layout_constraintVertical_bias="0.159" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/buttonCloset"
         android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:text="Closet"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.289" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/buttonWastafel"
         android:layout_width="281dp"
         android:layout_height="wrap_content"
         android:text="wastafel"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.423" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/buttonLantai"
         android:layout_width="282dp"
         android:layout_height="wrap_content"
         android:text="Lantai"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonPintu"
         android:layout_width="289dp"
         android:layout_height="44dp"
         android:text="Pintu"
@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.67" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/buttonKaca"
         android:layout_width="289dp"
         android:layout_height="wrap_content"
         android:text="Kaca"
