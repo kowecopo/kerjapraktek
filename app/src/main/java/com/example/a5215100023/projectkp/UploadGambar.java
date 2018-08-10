@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -42,6 +43,7 @@ public class UploadGambar extends AppCompatActivity {
     Bitmap bitmap;
     String urlUpload = "http://192.168.56.1/kp/upload.php";
     ProgressDialog progressDialog;
+    TextView tv;
 
 
     @Override
@@ -53,6 +55,7 @@ public class UploadGambar extends AppCompatActivity {
         iv1 = (ImageView) findViewById(R.id.imageView);
 
         btnUpload = (Button) findViewById(R.id.button12);
+        tv = (TextView) findViewById(R.id.textView2);
 
         btnPilih1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -85,7 +88,7 @@ public class UploadGambar extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Error: "+ error.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                     }
                 }){
                     @Override
@@ -131,17 +134,20 @@ public class UploadGambar extends AppCompatActivity {
                 InputStream inputStream = getContentResolver().openInputStream(filePath);
                 bitmap = BitmapFactory.decodeStream(inputStream);
                 iv1.setImageBitmap(bitmap);
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        }
+        } else
 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
     private String imageToString(Bitmap bitmap){
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+//    3145728    6144
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, outputStream);
+
         byte[] imageBytes = outputStream.toByteArray();
 
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
