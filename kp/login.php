@@ -9,9 +9,10 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $toilet = $_POST['toilet'];
 $login_time = date('Y-m-d H:i:s');
+$tanggal_hari_ini = date('Y-m-d');
 
 if ($conn) {
-	$result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password'");
+	$result = mysqli_query($conn, "SELECT * FROM user WHERE username='$username' AND password='$password' AND jadwal='$tanggal_hari_ini' AND password='$toilet'");
 	if (mysqli_num_rows($result) > 0) {
 		$data = mysqli_fetch_array($result);
 		$id_user = $data['id_user'];

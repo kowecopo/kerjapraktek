@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class Barcode extends AppCompatActivity {
 
-    Button scan_btn;
+    Button scan_btn, btnLihatJadwal, btnGantiJadwal;
     Spinner sp;
     TextView display_data;
  //   TextView display_data2;
@@ -38,7 +39,6 @@ public class Barcode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barcode);
 
-//barcode
         scan_btn = (Button)findViewById(R.id.scan_btn);
         final Activity activity = this;
         scan_btn.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +51,30 @@ public class Barcode extends AppCompatActivity {
                 integrator.setBeepEnabled(false);
                 integrator.setBarcodeImageEnabled(false);
                 integrator.initiateScan();
+            }
+        });
+
+        btnGantiJadwal = (Button) findViewById(R.id.btnGantiJadwal);
+
+        btnGantiJadwal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), GantiJadwal.class));
+            }
+        });
+
+        btnLihatJadwal = (Button) findViewById(R.id.btnLihatJadwal);
+
+        btnLihatJadwal.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                String url = "http://192.168.56.1/kp/lihatjadwal.php";
+
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
 

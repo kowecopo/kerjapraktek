@@ -102,6 +102,15 @@ public class UploadGambarSesudah extends AppCompatActivity {
         });
     }
 
+    public void rusak(View view) {
+        final User user = new User(UploadGambarSesudah.this);
+        String id_absensi = user.getId_absensi();
+        String nama_alat = user.getNama_alat();
+        String type = "rusak";
+        RusakBackground rusakBackground = new RusakBackground(this);
+        rusakBackground.execute(type, id_absensi, nama_alat);
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 

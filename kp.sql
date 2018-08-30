@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2018 at 09:15 AM
+-- Generation Time: Aug 30, 2018 at 01:14 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -46,7 +46,26 @@ CREATE TABLE `data` (
   `id_absensi` int(11) NOT NULL,
   `nama_alat` varchar(30) NOT NULL,
   `gambar_sebelum` varchar(30) NOT NULL,
-  `gambar_sesudah` varchar(30) NOT NULL
+  `waktu_sebelum` varchar(30) NOT NULL,
+  `gambar_sesudah` varchar(30) NOT NULL,
+  `waktu_sesudah` varchar(30) NOT NULL,
+  `keterangan` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request`
+--
+
+CREATE TABLE `request` (
+  `id_request` int(11) NOT NULL,
+  `nama1` varchar(30) NOT NULL,
+  `jadwal1` date NOT NULL,
+  `toilet1` varchar(30) NOT NULL,
+  `nama2` varchar(30) NOT NULL,
+  `jadwal2` date NOT NULL,
+  `toilet2` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -58,15 +77,16 @@ CREATE TABLE `data` (
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
-  `password` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `jadwal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
-(1, 'habib', 'habib');
+INSERT INTO `user` (`id_user`, `username`, `password`, `jadwal`) VALUES
+(1, 'habib', 'Toilet 1', '2018-08-30');
 
 --
 -- Indexes for dumped tables
@@ -77,6 +97,12 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absensi`);
+
+--
+-- Indexes for table `request`
+--
+ALTER TABLE `request`
+  ADD PRIMARY KEY (`id_request`);
 
 --
 -- Indexes for table `user`
@@ -92,7 +118,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_absensi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `request`
+--
+ALTER TABLE `request`
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`

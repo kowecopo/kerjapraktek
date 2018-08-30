@@ -26,7 +26,11 @@
         <activity android:name=".MenuToilet" />
         <activity android:name=".UploadGambar" />
         <activity android:name=".Splash" />
-        <activity android:name=".UploadGambarSesudah"></activity>
+        <activity android:name=".UploadGambarSesudah" />
+        <activity
+            android:name=".GantiJadwal"
+            android:label="@string/title_activity_ganti_jadwal"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
